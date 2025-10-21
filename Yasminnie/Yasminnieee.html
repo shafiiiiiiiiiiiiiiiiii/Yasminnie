@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff66b3">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Yasmine — My Darling Coquette ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Pacifico', cursive, 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #ffe6f0, #ffd9e8, #e6ccff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').then(()=>{console.log('SW registered');});
+}
+</script>
+           }
+  .container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  input[type=password] {
+    padding: 12px;
+    border-radius: 15px;
+    border: 2px solid #ff99cc;
+    text-align: center;
+    width: 180px;
+    margin-right: 12px;
+    transition: transform 0.3s;
+  }
+  input[type=password]:focus {
+    outline: none;
+    transform: scale(1.05);
+    border-color: #ff66b3;
+  }
+  button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 15px;
+    background-color: #ff66b3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  button:hover {
+    transform: scale(1.08);
+  }
+  .timer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 25px;
+  }
+  .tile {
+    background: #ffe6f0;
+    padding: 22px;
+    border-radius: 18px;
+    width: 100px;
+    box-shadow: 0 5px 15px rgba(255,0,153,0.2);
+    transition: transform 0.3s;
+  }
+  .tile:hover {
+    transform: scale(1.05);
+  }
+  .value {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #ff3399;
+  }
+  .label {
+    font-size: 0.85em;
+    color: #99004d;
+    margin-top: 5px;
+  }
+  .note {
+    margin-top: 22px;
+    font-size: 0.95em;
+    color: #cc0066;
+    background: #ffe6f0;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(255,0,153,0.15);
+    animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+  .heart {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff66b3;
+    transform: rotate(-45deg);
+    animation: floatHeart 6s linear infinite;
+    z-index:1;
+  }
+  .heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff66b3;
+    border-radius: 50%;
+  }
+  .heart::before { top: -7.5px; left: 0; }
+  .heart::after { left: 7.5px; top: 0; }
+  @keyframes floatHeart {
+    0% { transform: translateY(0) rotate(-45deg); opacity:1; }
+    50% { opacity:0.6; }
+    100% { transform: translateY(-600px) rotate(-45deg); opacity:0; }
+  }
+</style>
+</head>
+<body>
+<div class="container" id="container">
+  <h1 style="font-family: 'Sacramento', cursive; font-size:3em; color:#ff3399;">For Yasminnie — My Darling Princess ✨</h1>
+  <div id="login">
+    <p>Enter the secret password 💌</p>
+    <input type="password" id="password" placeholder="dd.mm.yyyy" />
+    <button onclick="checkPassword()">Open</button>
+    <p id="error" style="color:red;margin-top:12px;"></p>
+  </div>
+  <div id="timerContent" style="display:none;">
+    <h2 style="font-family: 'Sacramento', cursive; color:#ff3399;">Our Beginning — 6 April 2025, 03:15 (BDT)</h2>
+    <div class="timer" id="timer"></div>
+    <div class="note">You are my sweetest secret, my most precious gift and my forever pretty doll. 💕</div>
+  </div>
+</div>
+<script>
+  const PASSWORD = '18.04.2025';
+  const startDate = new Date('2025-04-06T03:15:00+06:00');function checkPassword(){ const input = document.getElementById('password').value; if(input === PASSWORD){ document.getElementById('login').style.display = 'none'; document.getElementById('timerContent').style.display = 'block'; startTimer(); createHearts(); } else { document.getElementById('error').textContent = "Incorrect password 💔, try again gently"; } }
+
+function startTimer(){ const timerDiv = document.getElementById('timer'); function updateTimer(){ const now = new Date(); let years = now.getFullYear() - startDate.getFullYear(); let months = now.getMonth() - startDate.getMonth(); let days = now.getDate() - startDate.getDate(); let hours = now.getHours() - startDate.getHours(); let minutes = now.getMinutes() - startDate.getMinutes(); let seconds = now.getSeconds() - startDate.getSeconds();
+
+if(seconds<0){seconds+=60; minutes--;}
+  if(minutes<0){minutes+=60; hours--;}
+  if(hours<0){hours+=24; days--;}
+  if(days<0){
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(),0);
+    days+=prevMonth.getDate();
+    months--;
+  }
+  if(months<0){months+=12; years--;}
+
+  timerDiv.innerHTML = `
+    <div class="tile"><div class="value">${years}</div><div class="label">Years</div></div>
+    <div class="tile"><div class="value">${months}</div><div class="label">Months</div></div>
+    <div class="tile"><div class="value">${days}</div><div class="label">Days</div></div>
+    <div class="tile"><div class="value">${hours}</div><div class="label">Hours</div></div>
+    <div class="tile"><div class="value">${minutes}</div><div class="label">Minutes</div></div>
+    <div class="tile"><div class="value">${seconds}</div><div class="label">Seconds</div></div>
+  `;
+}
+updateTimer();
+setInterval(updateTimer, 1000);
+
+}
+
+function createHearts(){ for(let i=0; i<30; i++){ const heart = document.createElement('div'); heart.className = 'heart'; heart.style.left = Math.random() * window.innerWidth + 'px'; heart.style.animationDuration = (4 + Math.random() * 4) + 's'; heart.style.width = (10 + Math.random()*10)+'px'; heart.style.height = (10 + Math.random()*10)+'px'; document.body.appendChild(heart); } } </script>
+
+</body>
+</html>
